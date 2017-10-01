@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<%= render '/layouts/header' %>
+<p>
+  <strong>Plate:</strong>
+  <%= @truck.plate %>
+</p>
+
+<%= link_to 'Edit', edit_truck_path(@truck) %> |
+<%= link_to 'Back', trucks_path %>

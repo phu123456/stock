@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<%= render '/layouts/header' %>
+<p>
+  <strong>Room:</strong>
+  <%= @storage.room %>
+</p>
+
+<p>
+  <strong>Zone:</strong>
+  <%= @storage.zone %>
+</p>
+
+<%= link_to 'Edit', edit_storage_path(@storage) %> |
+<%= link_to 'Back', storages_path %>

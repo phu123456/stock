@@ -1,0 +1,48 @@
+<%= render '/layouts/header' %>
+<%= form_with(model: history, local: true) do |form| %>
+  <% if history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(history.errors.count, "error") %> prohibited this history from being saved:</h2>
+
+      <ul>
+      <% history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name, id: :history_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :history_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :update_date %>
+    <%= form.date_select :update_date, id: :history_update_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :updater %>
+    <%= form.text_area :updater, id: :history_updater %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plate %>
+    <%= form.text_area :plate, id: :history_plate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discription %>
+    <%= form.text_area :discription, id: :history_discription %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

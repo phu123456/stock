@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<%= render '/layouts/header' %>
+<h1 align="center">ห้องเก็บของ</h1>
+<br>
+<table class="table table-striped" style="width:55%" align="center">
+  <thead>
+    <tr>
+      <th class="ui-helper-center">ห้อง</th>
+      <th class="ui-helper-center">โซน</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @storages.each do |storage| %>
+      <tr>
+        <td class="ui-helper-center"><%= storage.room %></td>
+        <td class="ui-helper-center"><%= storage.zone %></td>
+        <td class="ui-helper-center"><%= link_to 'Edit', edit_storage_path(storage) %></td>
+        <td class="ui-helper-center"><%= link_to 'Destroy', storage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div align="center">
+  <br>
+  <%= link_to 'เพิ่มห้อง', new_storage_path %>
+</div>

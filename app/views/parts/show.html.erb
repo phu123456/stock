@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<%= render '/layouts/header' %>
+<p>
+  <strong>Name:</strong>
+  <%= @part.name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @part.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

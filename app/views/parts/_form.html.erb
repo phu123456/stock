@@ -1,0 +1,66 @@
+<div style="width:600px; margin:0 auto;" class="wrap">
+    <div class="fleft">
+      <div align="center">
+        <br><br><br><br>
+        <%= form_with(model: part, local: true) do |form| %>
+          <% if part.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+
+              <ul>
+              <% part.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :จำนวนที่เพิ่ม %>
+            <%= form.number_field :add, id: :add %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit "เพิ่มเข้าสต๊อก"%>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+    <div class="fright">
+      <div class="test" align="center">
+        <br>
+        <%= form_with(model: part, local: true) do |form| %>
+          <% if part.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+
+              <ul>
+              <% part.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :จำนวนที่เอาออก %>
+            <%= form.number_field :out, id: :part_out%>
+          </div>
+
+          <div class="field">
+            <%= form.select(:plate, Truck.all.pluck(:plate)) %>
+          </div>
+
+          <div class="field">
+            <%= form.label :หมายเหตุ %>
+            <%= form.text_area :discription, id: :part_discription%>
+          </div>
+
+          <div class="actions">
+            <%= form.submit "ออกจากสต๊อก" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>

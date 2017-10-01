@@ -1,0 +1,32 @@
+<div style="position: absolute; left: 34%; width: 400px; height: 250px; border: 4px solid black">
+  <div align="center">
+    <br><br>
+    <%= form_with(model: storage, local: true) do |form| %>
+      <% if storage.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(storage.errors.count, "error") %> prohibited this storage from being saved:</h2>
+
+          <ul>
+          <% storage.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :room %>
+        <%= form.text_area :room, id: :storage_room %>
+      </div>
+
+      <div class="field">
+        <%= form.label :zone %>
+        <%= form.text_area :zone, id: :storage_zone %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

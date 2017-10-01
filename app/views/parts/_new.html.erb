@@ -1,0 +1,38 @@
+<div style="position: absolute; left: 35%; width: 400px; height: 250px; border: 4px solid black">
+  <div align="center">
+    <br><br>
+    <%= form_with(model: part, local: true) do |form| %>
+      <% if part.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+
+          <ul>
+          <% part.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_area :name, id: :part_name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :จำนวน %>
+        <%= form.number_field :quantity, id: :part_quantity %>
+      </div>
+
+      <div class="field">
+        <%= form.select :storage_id, options_for_select(Storage.all.map{|c| ["ห้อง "+c.room+" - โซน "+c.zone, c.id]}, form.object.storage_id), {:include_blank => 'เลือกห้องเก็บ'} %>
+      </div>
+
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+
+    <% end %>
+    </div>
+</div>
