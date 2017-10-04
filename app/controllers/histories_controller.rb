@@ -4,7 +4,9 @@ class HistoriesController < ApplicationController
   # GET /histories
   # GET /histories.json
   def index
-    @histories = History.search(params[:search])
+    @search = HistorySearch.new(params[:search])
+    @histories = @search.scope.search(params[:part_search])
+    # @histories_date = History.search(params[:search])
   end
 
   # GET /histories/1

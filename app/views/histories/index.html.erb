@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 <%= render '/layouts/header' %>
-<div align="right">
-  <%= form_tag histories_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :plate => nil %>
-    </p>
-  <% end %>
-<div>
-<h2 align="center">ประวัติ</h2>
 
+
+<div align="center">
+  <%= form_tag histories_path, method: :get do %>
+    <%= text_field_tag 'search[date_from]', @search.date_from %>
+    <%= text_field_tag 'search[date_to]', @search.date_to %>
+    <%= text_field_tag :part_search, params[:part_search], placeholder: "อะไหล่/ทะเบียนรถ" %>
+    <%= submit_tag 'ค้นหา', class: 'btn search-button' %>
+  <% end %>
+</div>
+
+<h2 align="center">ประวัติ</h2>
 <table class="table table-striped" style="width:90%" align="center">
   <thead>
     <tr>
@@ -28,7 +30,7 @@
     <% @histories.each do |history| %>
       <tr>
         <td class="ui-helper-center"><%= history.name %></td>
-          <% if history.quantity > 0 %>
+          <% if history.quantity.to_i > 0 %>
              <td class="ui-helper-center"> +<%= history.quantity %> </td>
           <% else %>
              <td class="ui-helper-center"> <%= history.quantity %> </td>

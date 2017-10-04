@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /parts
   # GET /parts.json
@@ -22,6 +22,7 @@ class PartsController < ApplicationController
 
   # GET /parts/1/edit
   def edit
+    @trucks = Truck.all
   end
 
   # POST /parts

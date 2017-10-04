@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 <%= render '/layouts/header' %>
 
-<h2 align="center">อะไหล่</h2>
-
-
 <div align="center">
   <%= form_tag parts_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= text_field_tag :search, params[:search] ,placeholder: "ค้นหาอะไหล่"%>
+      <%= submit_tag "Search", class: 'btn search-button' %>
     </p>
   <% end %>
 <div>
+
+<h2 align="center">อะไหล่</h2>
+
 
 <table class="table table-striped" style="width:75%" align="center">
   <thead>
@@ -29,7 +29,6 @@
         <td class="ui-helper-center"><%= part.name %></td>
         <td class="ui-helper-center"><%= part.quantity %></td>
         <td class="ui-helper-center"><%= "ห้อง" + Storage.find(part.storage_id).room + " โซน" + Storage.find(part.storage_id).zone %></td>
-        <!-- <td><%= link_to 'นำเข้า', part %></td> -->
         <td class="ui-helper-center"><%= link_to 'เปลี่ยนจำนวน', edit_part_path(part) %></td>
         <td class="ui-helper-center"><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -44,5 +43,6 @@
     word-spacing: 50px;
 }
 </style>
-
-<%= link_to 'เพิ่มอะไหล่', new_part_path %>
+<div align="center">
+  <%= link_to 'เพิ่มอะไหล่', new_part_path %>
+</div>

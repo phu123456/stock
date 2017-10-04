@@ -5,6 +5,7 @@ class TrucksController < ApplicationController
   # GET /trucks.json
   def index
     @trucks = Truck.all
+    #  @products = Product.all :conditons => {:type => params[:type]}
   end
 
   # GET /trucks/1
